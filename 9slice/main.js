@@ -7,6 +7,7 @@ var topBar, rightBar, bottomBar, leftBar;
 var topRight, topLeft, bottomRight, bottomLeft;
 var cnt;
 var a = 0; var b = 0;
+var nS;
 
 const init = () => {
 	renderer = PIXI.autoDetectRenderer(1920, 1080, {
@@ -25,25 +26,32 @@ const init = () => {
 const loaded = (instance) => {
 	stage = instance;
 	stage.name = 'stage';
-	s.addChild(stage);
+	// s.addChild(stage);
 
-	const resizableCnt = stage.cnt;
+	ns = new NineSliceContainer(stage.cnt);
 
-	topBar = resizableCnt.topBar;
-	rightBar = resizableCnt.rightBar;
-	bottomBar = resizableCnt.bottomBar;
-	leftBar = resizableCnt.leftBar;
+	ns.x = 300;
+	ns.y = 300;
 
-	topRight = resizableCnt.topRight;
-	topLeft = resizableCnt.topLeft;
-	bottomRight = resizableCnt.bottomRight;
-	bottomLeft = resizableCnt.bottomLeft;
+	s.addChild(ns);
 
-	cnt = resizableCnt.cnt;
+	// const resizableCnt = stage.cnt;
+
+	// topBar = resizableCnt.topBar;
+	// rightBar = resizableCnt.rightBar;
+	// bottomBar = resizableCnt.bottomBar;
+	// leftBar = resizableCnt.leftBar;
+
+	// topRight = resizableCnt.topRight;
+	// topLeft = resizableCnt.topLeft;
+	// bottomRight = resizableCnt.bottomRight;
+	// bottomLeft = resizableCnt.bottomLeft;
+
+	// cnt = resizableCnt.cnt;
 
 
-	stage.cnt.x = stage.cnt.width/2;
-	stage.cnt.y = stage.cnt.height/2;
+	// stage.cnt.x = stage.cnt.width/2;
+	// stage.cnt.y = stage.cnt.height/2;
 };
 
 
@@ -77,7 +85,7 @@ const resizeCnt = (w = 360, h = 360) => {
 
 const update = () => {
 	requestAnimationFrame(update);
-	if(stage && (a<600 && b<600)) resizeCnt(a++, b++);
+	// if(stage && (a<600 && b<600)) resizeCnt(a++, b++);
 
 	renderer.render(s);
 };
